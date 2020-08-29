@@ -27,7 +27,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: '/auth/google/callback'，
+      prox: true
     },
     (accessToken, refreshToken, profile, done) => {
       // the query doesn't return a user, instead, the query returns a promise
