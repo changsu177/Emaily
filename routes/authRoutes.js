@@ -18,5 +18,5 @@ app.get('/api/logout',(req,res) =>{
 });
 
 app.get('/api/current_user', (req, res) =>{
-  res.send(req.user);
+  res.send(req.user)
 });

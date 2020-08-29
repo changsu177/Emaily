@@ -11,7 +11,6 @@ const User = mongoose.model('users');
 passport.serializeUser ( (user, done) => {
   // stuff the id into the cookie. turn a user model to an id
   done(null, user.id);
-
 });
 // take the id that we previously stuff into the cookie and turn it back into a
 // actual user model
