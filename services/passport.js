@@ -33,7 +33,7 @@ passport.use(
     (accessToken, refreshToken, profile, done) => {
       // the query doesn't return a user, instead, the query returns a promise
       // which is a tool that we use with js for handling asynchronous code
-      User.findOne({googleId: profile.id}).then(exisingUser => {
+      User.findOne({googleId: profile.id}).then(existingUser => {
         if (existingUser) {
           //we already have a record with the given profile Id
           // tell the passport we are done
