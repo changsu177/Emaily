@@ -30,22 +30,21 @@ passport.use(
       callbackURL: '/auth/google/callback',
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      // the query doesn't return a user, instead, the query returns a promise
-      // which is a tool that we use with js for handling asynchronous code
-      User.findOne({googleId: profile.id}).then(existingUser => {
-        if (existingUser) {
-          //we already have a record with the given profile Id
-          // tell the passport we are done
-          // the 1st param is an error object
-          done(null, existingUser);
-        } else {
-          // we don't have the record with this id, create a new one
-          // to create model instance
-          // and save it to the mongdb database
-          new User({googleId: profile.id}).save().then(user => done(null, user));
-        }
-      });
+  async (accessToken, refreshToken, profile, done) => {
+    // the query doesn't return a user, instead, the query returns a promise
+    // which is a tool that we use with js for handling asynchronous code
+    const existingUser = await  User.findOne({googleId: profile.id})
+    if (existingUser) {
+      //we already have a record with the given profile Id
+      // tell the passport we are done
+      // the 1st param is an error object
+      return done(null, existingUser);
+    }
+      // we don't have the record with this id, create a new one
+      // to create model instance
+      // and save it to the mongdb database
+     const user = await new User({googleId: profile.id}).save()
+     done(null, user);
 
     }
   )
