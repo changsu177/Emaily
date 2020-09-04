@@ -11,8 +11,6 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    // this script will be called automatically after sever dependencies have
-    //been installed
     "heroku-postbuild" : "NPM_CONFIG_PRODUCTION = false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
