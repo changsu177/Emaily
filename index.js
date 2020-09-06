@@ -6,7 +6,9 @@ const passport = require('passport');
 
 const keys = require('./config/keys');
 require('./models/User');
+require('./models/Survey');
 require('./services/passport');
+
 const bodyParse = require('body-parser');
 
 
@@ -29,9 +31,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // routes files export a function
-//require statement here turns into a function and is called with the express object
+//require statement here turns into a function and is called with the express object (app)
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 //handle the prodution side
 if(process.env.NODE_ENV === 'production') {
