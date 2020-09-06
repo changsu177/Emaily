@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const {Path} = require('path-parser');
+const { Path } = require('path-parser');
 //'url' help us to parse the url
 const {URL} = require('url');
 
