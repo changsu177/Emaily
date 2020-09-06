@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
-const RecipientShema = require('./recipient');
+const RecipientShema = require('./Recipient');
 // mongo size limit for a single record = 4mb (megabites)
 // mongoose doc
 const surveySchema = new Schema({
